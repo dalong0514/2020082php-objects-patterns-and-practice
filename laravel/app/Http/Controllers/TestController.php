@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Code\UserStore;
+use App\Code\Validator;
 use Illuminate\Http\Request;
 
 class TestController extends Controller
@@ -14,9 +15,11 @@ class TestController extends Controller
             'bob@example.com',
             '12345'
         );
-        $store->notifyPasswordFailure('bob@example.com');
-        $user = $store->getUser('bob@example.com');
-        dd($user);
-        return $user;
+        // $store->notifyPasswordFailure('bob@example.com');
+        // $user = $store->getUser('bob@example.com');
+        $validator = new Validator($store);
+        if ($validator->validateUser('bob@example.com', '12345')) {
+            print "pass, friend\n";
+        } else print "false\n";
     }
 }
