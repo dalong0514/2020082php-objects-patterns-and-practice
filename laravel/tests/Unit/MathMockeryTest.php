@@ -2,6 +2,7 @@
 
 namespace Tests\Unit;
 
+use App\Code\Calculate;
 use App\Code\Math;
 use Mockery as m;
 use Mockery\Adapter\Phpunit\MockeryTestCase;
@@ -12,7 +13,7 @@ class MathMockeryTest extends MockeryTestCase
     // private $math;
     public function setUp(): void {
         parent::setUp();
-        $this->calculate = m::mock('App\Code\Calculate');
+        $this->calculate = m::mock(Calculate::class);
         $this->math = new Math($this->calculate);
     }
 

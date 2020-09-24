@@ -41,11 +41,11 @@ class ValidatorTest extends TestCase
 
         $stub->expects($this->any())
             ->method('getUser')
-            ->will($this->returnValue([
+            ->willReturn([
                 'name' => 'bob williams',
                 'mail' => 'bob@example.com',
                 'pass' => 'right'
-            ]));
+            ]);
 
         $this->validator = new Validator($stub);
         $this->validator->validateUser('bob@example.com', 'wrong');
