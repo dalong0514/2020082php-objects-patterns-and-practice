@@ -34,9 +34,10 @@ class UserStoreTest extends TestCase
             self::fail('Exception should have been thrown');
         } catch (\Exception $e) {
             $const = $this->logicalAnd(
-                $this->logicalNot($this->contains('bob stevens')),
+                $this->logicalNot($this->containsEqual('bob stevens')),
                 $this->isType('array')
             );
+            // 自定义断言
             self::assertThat($this->store->getUser('a@b.com'), $const);
         }
     }
