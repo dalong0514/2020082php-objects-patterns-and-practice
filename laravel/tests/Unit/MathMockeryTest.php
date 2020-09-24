@@ -9,8 +9,8 @@ use Mockery\Adapter\Phpunit\MockeryTestCase;
 
 class MathMockeryTest extends MockeryTestCase
 {
-    // private $calculate;
-    // private $math;
+    private $calculate;
+    private $math;
     public function setUp(): void {
         parent::setUp();
         $this->calculate = m::mock(Calculate::class);
