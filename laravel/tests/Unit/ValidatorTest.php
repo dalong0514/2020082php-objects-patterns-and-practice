@@ -30,4 +30,10 @@ class ValidatorTest extends TestCase
         );
     }
 
+    public function testMockTest() {
+        $stub = $this->createMock(Validator::class);
+        $stub->method('doSomething')->willReturn('dalong');
+        $this->assertEquals('dalong', $stub->doSomething('da'));
+    }
+
 }

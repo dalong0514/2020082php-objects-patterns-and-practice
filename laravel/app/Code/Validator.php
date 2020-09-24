@@ -23,4 +23,8 @@ class Validator {
 
         return false;
     }
+
+    public function doSomething($test) {
+        return $test;
+    }
 }
