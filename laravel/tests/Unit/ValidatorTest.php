@@ -30,6 +30,21 @@ class ValidatorTest extends TestCase
         );
     }
 
+    public function testValidateFalsePass() {
+        $stub = $this->createMock(UserStore::class);
+
+        $stub->expects($this->any())
+            ->method('getUser')
+            ->will($this->returnValue([
+                'name' => 'bob williams',
+                'mail' => 'bob@example.com',
+                'pass' => 'right'
+            ]));
+
+        $this->validator = new Validator($stub);
+        $this->assertTrue($this->validator->validateUser('bob@example.com', 'right'));
+    }
+
     public function testMockTest() {
         $stub = $this->createMock(Validator::class);
         $stub->method('doSomething')->willReturn('dalong');
